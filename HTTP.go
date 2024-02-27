@@ -13,13 +13,13 @@ type TimeResponse struct {
 func timeHandler(w http.ResponseWriter, r *http.Request) {
 	currentTime := time.Now().Format(time.RFC3339)
 	res := TimeResponse{Time: currentTime}
-	jsonResponse, err := json.Marshal(res)
+	jsonRes, err := json.Marshal(res)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
 	w.Header().Set("Content-Type", "application/json")
-	_, err = w.Write(jsonResponse)
+	_, err = w.Write(jsonRes)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
