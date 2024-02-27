@@ -12,8 +12,8 @@ type TimeResponse struct {
 
 func timeHandler(w http.ResponseWriter, _ *http.Request) {
 	currentTime := time.Now().Format(time.RFC3339)
-	response := TimeResponse{Time: currentTime}
-	jsonResponse, err := json.Marshal(response)
+	res := TimeResponse{Time: currentTime}
+	jsonResponse, err := json.Marshal(res)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
